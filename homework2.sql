@@ -37,9 +37,10 @@ GROUP BY Department_name;
 SELECT manager_id "Manager Number",
   MIN(salary) "Min Salary of Employees"
 FROM employees
+WHERE manager_id IS NOT NULL
 GROUP BY manager_id
 HAVING MIN(salary)  >5000
-AND NOT manager_id IS NULL;
+ORDER BY 2 DESC;
 
 --Q5 final
 SELECT last_name "Last Name",
@@ -68,14 +69,21 @@ SELECT department_Name "Department Name",
   ||state_province "Location"
 FROM departments
 JOIN locations USING(location_id)
-WHERE department_name != 'Sales';
+WHERE department_name !=
+  (SELECT department_Name
+      FROM departments NATURAL
+      JOIN employees NATURAL
+      JOIN jobs
+      WHERE job_title ='Sales Representative'
+      GROUP BY department_name
+      );
 
 --Q8 final
 SELECT job_id,
   department_id
 FROM employees
 WHERE hire_date < '&Date'
-ORDER BY job_id DESC;
+ORDER BY department_id DESC, job_id ASC;
 
 --Q9 final
 SELECT MAX(b.salary) "SalaryMoreThanManager"
