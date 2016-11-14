@@ -1,4 +1,4 @@
---Q1 Final
+--Q1 final
 SELECT a.first_name
   ||' '
   ||a.last_name"Employee's name",
@@ -14,9 +14,6 @@ WHERE a.Manager_Id=b.employee_Id
 AND b.salary      >12000
 AND b.Salary BETWEEN Job_Grades.Lowest_Sal AND Job_Grades.Highest_Sal;
 
-
-
-
 --Q2 final
 SELECT First_Name
   ||' '
@@ -29,8 +26,7 @@ SELECT First_Name
 FROM employees
 JOIN Departments USING(Department_id);
 
---q3 final
-
+--Q3 final
 SELECT MAX(salary)-MIN(salary) "Salary Difference",
   department_name "Department"
 FROM Employees
@@ -45,7 +41,7 @@ GROUP BY manager_id
 HAVING MIN(salary)  >5000
 AND NOT manager_id IS NULL;
 
---Q5
+--Q5 final
 SELECT last_name "Last Name",
   salary "Salary"
 FROM employees
@@ -56,7 +52,6 @@ WHERE manager_id=
       AND first_name ='Kevin'
       );
 
-
 --Q6 final
 SELECT department_id "Department Number",
   MIN(salary) "Lowest Salary"
@@ -65,7 +60,6 @@ GROUP BY department_id
 HAVING AVG(salary)=
   (SELECT MAX(AVG(salary)) FROM employees GROUP BY department_id
       );
-
 
 --Q7 final
 SELECT department_Name "Department Name",
@@ -76,14 +70,12 @@ FROM departments
 JOIN locations USING(location_id)
 WHERE department_name != 'Sales';
 
-
 --Q8 final
 SELECT job_id,
   department_id
 FROM employees
 WHERE hire_date < '&Date'
 ORDER BY job_id DESC;
-
 
 --Q9 final
 SELECT MAX(b.salary) "SalaryMoreThanManager"
@@ -92,7 +84,7 @@ FROM employees a,
 WHERE a.salary    < b.salary
 AND a.employee_id = b.manager_id;
 
---Q10
+--Q10 final
 SELECT department_id "Department Number",
   department_name "Department Name",
   COUNT(employee_id) "NumberOfEmployees"
@@ -104,7 +96,7 @@ HAVING COUNT(employee_id)=
   (SELECT MAX(COUNT(employee_id)) FROM employees GROUP BY department_id
       );
 
---Q11
+--Q11 final
 SELECT first_name
   ||' '
   ||Last_name "Name",
@@ -117,13 +109,11 @@ WHERE hire_date >
       AND Last_name   ='Ernst'
       );
 
---Q12
+--Q12 final
 SELECT last_name,
   department_id,
   job_id
 FROM employees
 JOIN departments USING(department_id)
 WHERE location_id='&locationId';
-
-
 
