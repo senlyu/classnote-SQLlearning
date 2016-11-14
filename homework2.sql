@@ -63,20 +63,15 @@ HAVING AVG(salary)=
       );
 
 --Q7 final
-SELECT department_Name "Department Name",
+SELECT DISTINCT department_Name "Department Name",
   street_address
   ||city
   ||state_province "Location"
-FROM departments
-JOIN locations USING(location_id)
-WHERE department_name !=
-  (SELECT department_Name
-      FROM departments NATURAL
-      JOIN employees NATURAL
-      JOIN jobs
-      WHERE job_title ='Sales Representative'
-      GROUP BY department_name
-      );
+FROM locations
+JOIN departments using(location_id)
+JOIN employees using(department_id)
+JOIN jobs using(job_id)
+WHERE job_title !='Sales Representative';
 
 --Q8 final
 SELECT job_id,
