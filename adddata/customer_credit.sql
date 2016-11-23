@@ -18,5 +18,5 @@ into customer_credit values(16,'27-jun-2016',0,1)
 into customer_credit values(17,'27-jun-2016',-1,1)
 into customer_credit values(18,'27-jun-2016',0,1)
 into customer_credit values(19,'27-jun-2016',0,1)
-into customer_credit values(19,'28-jun-2016',0,1)
+into customer_credit values(20,'28-jun-2016',0,1)
 SELECT * FROM dual;
